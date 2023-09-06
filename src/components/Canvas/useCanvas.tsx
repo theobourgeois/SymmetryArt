@@ -109,7 +109,7 @@ const useCanvas = () => {
         window.removeEventListener("mouseup", handleMouseUp);
     }
 
-    function handleClick(e: MouseEvent) {
+    function handleClick(e: any) {
         if (!canvasRef.current) return;
         if (penType === PEN_TYPE.EYEDROP) handleEyeDrop(e);
     }
@@ -452,7 +452,7 @@ const useCanvas = () => {
         const pixelsToFill = [];
 
         while (queue.length > 0) {
-            const { x, y } = queue.shift();
+            const { x, y } = queue.shift() as { x: number; y: number };
             const key = `${x}-${y}`;
 
             if (visited.has(key)) continue;
